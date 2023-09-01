@@ -1,5 +1,5 @@
-const API_KEY = 3y33FP5_A7vhbguiTk2bWAgZYF8qy8OGNJsZQxRAXCk;
-const API_BASE = https://chimeragpt.adventblocks.cc/api/v1;
+const API_KEY = "3y33FP5_A7vhbguiTk2bWAgZYF8qy8OGNJsZQxRAXCk";
+const API_BASE = "https://chimeragpt.adventblocks.cc/api/v1";
 
 const generateBtn = document.getElementById('generate');
 const promptInput = document.getElementById('prompt');
