@@ -1,5 +1,5 @@
-const API_KEY = process.env.API_KEY;
-const API_BASE = process.env.API_BASE;
+const API_KEY = env.API_KEY;
+const API_BASE = env.API_BASE;
 
 const generateBtn = document.getElementById('generate');
 const promptInput = document.getElementById('prompt');
