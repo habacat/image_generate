@@ -1,1 +1,51 @@
-eval(function(p,a,c,k,e,r){e=function(c){return c.toString(36)};if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'[0-9a-m]'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('0 b=3y33FP5_A7vhbguiTk2bWAgZYF8qy8OGNJsZQxRAXCk;0 c=https:0 d=2.7(\'e\');0 f=2.7(\'8\');0 5=2.7(\'3\');0 4=2.g(\'div\');d.addEventListener(\'click\',async()=>{0 8=f.value;try{0 9=h fetch(`${c}/3/generations`,{method:\'POST\',headers:{\'Content-Type\':\'application/i\',\'Authorization\':`Bearer ${b}`},body:JSON.stringify({8,n:10,size:\'1024x1024\'})});0 1=h 9.i();if(!1.1||!Array.isArray(1.1)){throw new Error(\'Invalid 9\');}4.j=\'3-k\';5.a(4);1.1.forEach(l=>{0 6=2.g(\'6\');6.src=l.url;4.j=\'3-k\';5.a(4);5.a(6)})}catch(m){console.error(m);alert(\'Failed to e 3\')}});',[],23,'const|data|document|images|imagesContainer|imagesDiv|img|getElementById|prompt|response|appendChild|API_KEY|API_BASE|generateBtn|generate|promptInput|createElement|await|json|id|container|item|err'.split('|'),0,{}))
+const API_KEY = 3y33FP5_A7vhbguiTk2bWAgZYF8qy8OGNJsZQxRAXCk;
+const API_BASE = https://api.naga.ac/v1;
+
+const generateBtn = document.getElementById('generate');
+const promptInput = document.getElementById('prompt');
+const imagesDiv = document.getElementById('images');
+const imagesContainer = document.createElement('div');
+
+// imagesContainer.id = 'images-container';
+// imagesDiv.appendChild(imagesContainer);
+
+generateBtn.addEventListener('click', async () => {
+  const prompt = promptInput.value;
+
+try{
+  const response = await fetch(`${API_BASE}/images/generations`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${API_KEY}`
+    },
+    body: JSON.stringify({
+      prompt,
+      n: 10,
+      size: '1024x1024'
+    })
+  });
+
+
+  const data = await response.json();
+
+  if (!data.data || !Array.isArray(data.data)) {
+    throw new Error('Invalid response'); 
+  }
+	imagesContainer.id = 'images-container';
+	imagesDiv.appendChild(imagesContainer);
+    // imagesDiv.innerHTML = '';
+  
+  data.data.forEach(item => {
+    const img = document.createElement('img');
+	  img.src = item.url;
+	  imagesContainer.id = 'images-container';
+	  imagesDiv.appendChild(imagesContainer);
+    imagesDiv.appendChild(img);
+  });
+
+      } catch(err) {
+        console.error(err);
+        alert('Failed to generate images');  
+      }
+    });
